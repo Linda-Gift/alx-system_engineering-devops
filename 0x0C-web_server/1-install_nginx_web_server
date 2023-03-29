@@ -1,8 +1,18 @@
 #!/usr/bin/env bash
-# Web servers are the piece of software generating and serving HTML pages, let’s install one!
+# Installs Nginx with the following configurations:
+#    Listens on port 80.
+#    Returns a page containing "Hello World" when queried
+#    at the root with a curl GET request.
 
+# Install nginx
 sudo apt-get -y update
-sudo apt-get -y install nginx
-sudo ufw allow 'Nginx HTTP'
-echo 'Hello World!' > /var/www/html/index.nginx-debian.html
-sudo service nginx start
+sudo apt-get install -y nginx
+
+# configure nginx to listen on port 80
+ufw allow 'Nginx HTTP'
+
+# Creating Sample Page
+echo "Hello World!" > /var/www/html/index.html
+
+# Start Nginx
+service nginx start
