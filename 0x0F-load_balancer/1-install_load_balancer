@@ -1,5 +1,7 @@
+#!/usr/bin/env bash
+# Install and config. HAproxy on the lb-01 server
+# using roundrobin algorithm
 
-<<<<<<< HEAD
 sudo apt-get update -y
 sudo apt-get install haproxy -y
 
@@ -19,5 +21,4 @@ backend lindagift_back
 sudo sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/haproxy
 
 sudo service haproxy restart
-=======
->>>>>>> 3b2b203c5d8c405ffec816ef1cf9fa20e9adb8a9
+
