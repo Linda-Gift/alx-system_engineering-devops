@@ -9,7 +9,7 @@ sudo apt-get install haproxy -y
 echo "
 frontend lindagift_front
         bind *:80
-        default_backend lindagift_back
+        default_backend lindagift_backa
 
 backend lindagift_back
         balance roundrobin
