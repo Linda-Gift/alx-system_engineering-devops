@@ -21,4 +21,4 @@ sudo sed -i "s/listen 80 default_server;/$string_for_replacement/" /etc/nginx/si
 sudo sed -i '/http {/a \\tadd_header x-Served-By $hostname;' /etc/nginx/nginx.conf
 
 # Restart Nginx
-service nginx restart
+sudo service nginx restart
