@@ -18,7 +18,7 @@ string_for_replacement="listen 80 default_server;\n\terror_page 404 \/404.html;\
 sudo sed -i "s/listen 80 default_server;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
 #HTTP Header config.
-sudo sed -i '/http {/a \\tadd_header x-Served-By $hostname;' /etc/nginx.conf
+sudo sed -i '/http {/a \\tadd_header x-Served-By $hostname;' /etc/nginx/nginx.conf
 
 # Restart Nginx
 service nginx restart
