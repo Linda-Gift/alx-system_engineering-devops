@@ -5,15 +5,17 @@ import requests
 import sys
 
 if __name__ == "__main__":
-    user_id = sys.argv[1]
     url = "https://jsonplaceholder.typicode.com/"
-    user = requests.get("{}users/{}".format(url, user_id)).json()
-    tasks = requests.get("{}users/{}/todos".format(url, user_id)).json()
+    users = requests.get("{}users".format(url)).json()
+    tasks = requests.get("{}todos".format(url)).json()
     data_dict = {
-                user_id: [{"task": task.get("title"),
-                           "completed": task.get("completed"),
-                           "username": user.get("username")} for task in tasks]
-            }
+                user.get("id"): [{"username": user.get("username"),
+                                  "task": task.get("title"),
+                                  "completed": task.get("completed")}
+                                 for task in tasks
+                                 if task.get("userId") == user.get("id")]
+                for user in users
+           }
     # open a new JSON file in write mode
-    with open("{}.json".format(user_id), "w", newline="") as file:
+    with open("todo_all_employees.json", "w", newline="") as file:
         json.dump(data_dict, file)
