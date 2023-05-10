@@ -3,7 +3,6 @@
 
 import json
 import requests
-import sys
 
 def top_ten(subreddit):
     """This func. takes one parameter"""
