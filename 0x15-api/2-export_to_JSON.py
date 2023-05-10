@@ -1,21 +1,30 @@
 #!/usr/bin/python3
+
 """Exports to-do list information for a given employee ID to JSON format"""
+
+import csv
 import json
 import requests
 import sys
 
 if __name__ == "__main__":
+
     url = "https://jsonplaceholder.typicode.com/"
-    users = requests.get("{}users".format(url)).json()
-    tasks = requests.get("{}todos".format(url)).json()
-    data_dict = {
-                user.get("id"): [{"username": user.get("username"),
-                                  "task": task.get("title"),
-                                  "completed": task.get("completed")}
-                                 for task in tasks
-                                 if task.get("userId") == user.get("id")]
-                for user in users
-           }
-    # open a new JSON file in write mode
-    with open("todo_all_employees.json", "w", newline="") as file:
-        json.dump(data_dict, file)
+
+    emp_data = requests.get("{}users/{}".format(url, sys.argv[1]))
+    j_res = emp_data.json()
+
+    emp_task = requests.get("{}todos?userId={}".format(url, sys.argv[1]))
+    j_task = emp_task.json()
+    all_task = []
+    for task in j_task:
+        all_task.append({"task": task["title"],
+                         "completed": task["completed"],
+                         "username": j-res.get("username")})    filename = "{}.json".format(sys.argv[1])
+    with open(filename, "w") as json_file:
+         json.dump({sys.argv[1]: all_task}, json_file)
+    with open(filename, "r") as f:
+         read_data = json.load(f)
+         reverse_data = read_data[sys.argv[1]][::-1]
+         with open(filename, "w") as new_json:
+              json.dump({sys.argv[1]: reverse_data}, new_json)
