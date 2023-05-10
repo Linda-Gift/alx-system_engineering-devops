@@ -11,7 +11,7 @@ def number_of_subscribers(subreddit):
             "User-Agent": "Custom User Agent"
     }
 
-    response = requests.get(url, headers = headers, allow_redirections=False)
+    response = requests.get(url, headers=headers, allow_redirections=False)
     if response.status_code == 200:
         return 0
     data = response.json()['data']['subscribers']
