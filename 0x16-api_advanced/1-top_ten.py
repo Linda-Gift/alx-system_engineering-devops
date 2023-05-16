@@ -7,10 +7,9 @@ import requests
 
 def top_ten(subreddit):
     """This func. takes one parameter"""
-
-    url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
+    url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
     headers = {"User-Agent": "Custom User Agent"}
-
+    params = {"limit": 10}
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
         data = response.json()['data']['children']
@@ -18,3 +17,4 @@ def top_ten(subreddit):
             print(post['data']['title'])
         else:
             print(None)
+            return
