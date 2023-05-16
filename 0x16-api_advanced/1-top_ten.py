@@ -4,6 +4,7 @@
 import json
 import requests
 
+
 def top_ten(subreddit):
     """This func. takes one parameter"""
 
