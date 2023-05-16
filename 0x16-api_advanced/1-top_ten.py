@@ -1,12 +1,10 @@
 #!/usr/bin/python3
-"""A function that queries Reddit API and returns top ten hot post"""
-
-import json
+"""A func. that queries Reddit API & returns top ten hot post"""
 import requests
 
 
 def top_ten(subreddit):
-    """This func. takes one parameter"""
+    """This func. prints 10 hottest posts"""
     url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
     headers = {"User-Agent": "Custom User Agent"}
     params = {"limit": 10}
